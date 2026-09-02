@@ -1,6 +1,6 @@
 # OmniScan (`./omni`)
 
-**root** wireless recon agent command interface — Serial UART · HTTP `POST /api/omni` · ESP-NOW (Wi‑Fi LR).
+**root** wireless recon agent for **ESP32-S3** — Serial UART · HTTP `POST /api/omni` · ESP-NOW (Wi‑Fi LR).
 
 Authorized / owned-kit use only. Passiveive listen + SoftAP dashboard. No BLE write, no jam, no inject.
 

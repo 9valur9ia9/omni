@@ -1,8 +1,9 @@
 # OmniScan
 
-Public command surface for **root** — the ESP32-S3 wireless recon agent (Wi‑Fi · BLE · Sub‑GHz · Wi‑Fi LR).
+Public command surface for **root** — the **ESP32-S3** wireless recon agent (Wi‑Fi · BLE · Sub‑GHz · Wi‑Fi LR).
 
-**Firmware / flash:** [rockstars4nny-hub/root](https://github.com/rockstars4nny-hub/root)  
+**Target board:** ESP32-S3 (N16R8 / DevKitC-1) — not classic ESP32.  
+**Firmware / flash:** [rockstars4nny-hub/root](https://github.com/rockstars4nny-hub/root) (`pio run -e esp32-s3-n16r8 -t upload`)  
 **Command reference:** [COMMANDS.md](COMMANDS.md)  
 **ARIA:** Kit → **Omni** tab proxies `./omni` to the kit.
 
@@ -37,5 +38,5 @@ curl -s -X POST http://192.168.4.1/api/omni \
 
 ## Related
 
-- [root](https://github.com/rockstars4nny-hub/root) — ESP32 firmware + dashboard
+- [root](https://github.com/rockstars4nny-hub/root) — ESP32-S3 firmware + dashboard
 - [ARIA](https://github.com/rockstars4nny-hub/ARIA) — operator console (Omni tab)
