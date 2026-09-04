@@ -67,14 +67,21 @@ Devices appear in `/api/devices` with `"band":"ble"`.
 | `./omni subghz freq <315\|433\|868\|915>` | Fixed band |
 | `./omni subghz hop` | Hop 315→433→868→915 |
 | `./omni subghz list` | Recent hits |
-| `./omni subghz raw` | Last 10 raw packets (HEX / ASCII / GPS) |
+| `./omni subghz protocols` | Fob / remote brand + protocol knowledge base |
+| `./omni subghz raw` | Last 10 raw packets (HEX + protocol ID / brands) |
 | `./omni subghz raw <N>` | Last N packets (1–50) |
-| `./omni subghz raw last` | Newest packet only |
+| `./omni subghz raw last` | Newest packet + identify |
 | `./omni subghz raw filter <mhz>` | Filter by frequency (e.g. `433.92`) |
 | `./omni subghz raw clear` | Clear PSRAM ring |
 | `./omni subghz raw save` | Export `SUBGHZ` `.bin` to `psram://…` (no SD on kit) |
-| `./omni subghz raw decode <hex>` | ASCII / binary / base64 / 8·16-bit views |
-| `./omni subghz raw analyze` | Patterns, band %, RSSI & byte hist |
+| `./omni subghz raw decode <hex>` | Protocol/brand ID + ASCII / binary / base64 / 8·16-bit |
+| `./omni subghz raw id [mhz] [hex]` | Identify last packet or pasted hex |
+| `./omni subghz raw analyze` | Protocol histogram, patterns, band %, RSSI |
+
+Classifier: Flipper-class registry — Princeton, Holtek, Came/Atomo/TWEE, Nice Flo/Flor-S,
+Linear/MegaCode, KeeLoq, Somfy, Sec+ 1/2, Hormann, Marantec, Honeywell, Intertechno,
+Magellan, Dooya, FAAC SLH, StarLine, KIA, plus TPMS/weather/sensor/auto RKE priors.
+Fixed codes print Key=hex; rolling codes show ciphertext length only.
 
 Raw ring default: **2048 × 128 bytes** in PSRAM (override with `-DROOT_SUBGHZ_RAW_CAP=…`).
 
