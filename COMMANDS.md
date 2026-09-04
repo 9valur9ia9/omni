@@ -64,19 +64,29 @@ Devices appear in `/api/devices` with `"band":"ble"`.
 | Command | Description |
 |---------|-------------|
 | `./omni subghz scan on` / `off` | Enable / disable CC1101 RX |
-| `./omni subghz freq <315\|433\|868\|915>` | Fixed band |
-| `./omni subghz hop` | Hop 315→433→868→915 |
+| `./omni subghz freq <315\|433\|868\|915>` | **Lock** RX to one band (hopping off — park for auto/RKE) |
+| `./omni subghz hop [ms]` | Hop 315→433→868→915 (optional OOK dwell ms each) |
+| `./omni subghz dwell` | Show per-band OOK/FSK park times |
+| `./omni subghz dwell <ms>` | Set OOK dwell on **all** bands (100–60000) |
+| `./omni subghz dwell <315\|433\|868\|915> <ms>` | Set OOK dwell on one band |
 | `./omni subghz list` | Recent hits |
 | `./omni subghz protocols` | Fob / remote brand + protocol knowledge base |
-| `./omni subghz raw` | Last 10 raw packets (HEX + protocol ID / brands) |
-| `./omni subghz raw <N>` | Last N packets (1–50) |
-| `./omni subghz raw last` | Newest packet + identify |
+| `./omni subghz raw` | Last 10 — **all formats** (backend) |
+| `./omni subghz raw <N>` | Last N (1–50) with all formats |
+| `./omni subghz raw last` | Newest + identify + all formats |
+| `./omni subghz raw formats [N]` | Explicit all-formats dump (alias: `all`) |
 | `./omni subghz raw filter <mhz>` | Filter by frequency (e.g. `433.92`) |
 | `./omni subghz raw clear` | Clear PSRAM ring |
 | `./omni subghz raw save` | Export `SUBGHZ` `.bin` to `psram://…` (no SD on kit) |
-| `./omni subghz raw decode <hex>` | Protocol/brand ID + ASCII / binary / base64 / 8·16-bit |
+| `./omni subghz raw decode <hex>` | Paste hex → same all-formats block |
 | `./omni subghz raw id [mhz] [hex]` | Identify last packet or pasted hex |
 | `./omni subghz raw analyze` | Protocol histogram, patterns, band %, RSSI |
+
+Backend prints every view (no client decode):  
+`HEX` `HEX_CONTIG` `ASCII` `UTF8` `BASE64` `BITS` `BITS_CONTIG` `NIBBLES`  
+`DEC` `OCT` `S8` `U8` `S16_BE/LE` `U16_BE/LE` `S32_BE/LE` `U32_BE/LE` `BITS_META`  
+
+JSON: `GET /api/subghz/raw?n=20` returns the same fields on each packet.
 
 Classifier: Flipper-class registry — Princeton, Holtek, Came/Atomo/TWEE, Nice Flo/Flor-S,
 Linear/MegaCode, KeeLoq, Somfy, Sec+ 1/2, Hormann, Marantec, Honeywell, Intertechno,
